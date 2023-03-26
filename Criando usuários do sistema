@@ -1,0 +1,14 @@
+#!/bin/bash
+
+users=("guest10" "guest11" "guest12" "guest13")
+
+echo "Criando usuários do sistema...."
+
+for user in "${users[@]}"
+do
+    useradd "$user" -c "Usuário convidado" -s /bin/bash -m -p "$(openssl passwd - crypt Senha123)"
+    passwd "$user" -e 
+    
+done
+
+echo "Finalizado!!"
